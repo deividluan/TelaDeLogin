@@ -1,27 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 body {
-    margin: 0;
+    margin: 0; /*Tiran sansd, sans-serifo aquela borda feia do body*/
+    font-family: 'Noto sans', sans-serif
+}
+
+body * {
+    box-sizing: border-box;
 }
 
 .main-login{
-    width: 100vw;
-    height: 100vh;
-    background: #201b2c;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100vw; /*100VW significa que vai ocupar do campo de visão do computador HORIZONTALMENTE*/
+    height: 100vh; /*100VH significa que vai ocupar do campo de visão do computador VERTICALMENTE*/
+    /*Esses dois de cima são essenciais para manter a responsividade*/
+    background: #201b2c; /*Cor do background*/
+    display: flex; /*Permite que as classes dentro do main-login fiquem lado a lado*/
+    justify-content: center; /*Alinha os elementos da main-login no centro do eixo X (Horizontal)*/
+    align-items: center; /*Alinha os elementos da main-login no centro do eixo Y (Vertical)*/
 }
 
 .left-login{
-    width: 50vw;
+    width: 50vw; 
     height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column
+    flex-direction: column /*Permite que os elementos dentro do left-login fiquem um em baixo do outro*/
+    /*Todas as configurações aqui feitas ocorrem apenas com os elementos dentro do left-login*/
 }
 
 .left-login > h1 { 
-    color: #77ffc0;   
+    font-size: 3vw;
+    color: #77ffc0;
+    /*Aqui estamos modificando a cor da fonte de todos os elemntos h1 dentro do left-login*/   
+}
+
+.left-login-image {
+    width: 33vw;
+    /* <a href="https://storyset.com/people">People illustrations by Storyset</a> */
 }
 
 .right-login{
@@ -33,30 +49,98 @@ body {
 }
 
 .card-login{
-    width: 60%;
+    width: 60%; /*Usamos 60% porque ele vai ocupar 60% do right login que ele está localizado*/
     display: flex;
-    justify-content: center;
+    justify-content: center; 
     align-items: center;
     flex-direction: column;
-    padding: 30px 35px;
+    padding: 30px 35px; /*Margem de dentro do elemento*/
     background: #2f2841;
-    border-radius: 20px;
-    box-shadow: 0px 10px 40px #00000056
+    border-radius: 20px; /*Arredondando a borda*/
+    box-shadow: 0px 10px 40px #00000056 /*Sombra da caixa*/
+    /*Aqui estamos cofigurando o espaço em volta dos inputs, fomando um quadrado que guarda os elementos*/
 }
 
 .card-login > h1 {
-    color: #77ffc0;
-    font-weight: 800;
+    color: #77ffc0; 
+    font-weight: 800; /*Grossura da fonte*/
     margin: 0;
 }
 
 .textfield{
+    width: 100%;
     display:flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    flex-direction: column; /*Usar o flex-direction no inicio inverte as posições do align e justify*/
+    align-items: flex-start; /*Agora é o eixo X | flex-start passa o texto para o inicio*/
+    justify-content: center; /*Agora é o eixo Y*/
+    margin: 10px 0px;
+    /*Ajustando a classe que tem o label e o input (ex:usuario e caixa de input)*/
 }
 
 .textfield > input{
-    width: 100%
+    width: 100%;  /*Vai ocupar 100% da area da classe textfield*/  
+    border: none;
+    border-radius: 10px;
+    padding: 15px; /*Apenas um valor funciona tanto para o eixo X quanto para o eixo Y*/
+    background: #514869;
+    color: #f0ffffde;
+    font-size: 12pt; /*Funciona como a fonte do word*/
+    box-shadow: 0px 10px 40px #00000056; 
+    outline: none; /*Esconder linha em torno do input*/
+    box-sizing: border-box; /*Faz com que a div filho jamais ultrapasse o tamanho da div pai*/
+}
+
+.textfield > label{
+    color: #f0ffffde;
+    margin-bottom: 10px; /*Fazemos uma margem para baixo*/
+}
+
+.textfield > input::placeholder{
+    color: #f0ffff94;
+    /*Aqui estamos alterando os atributos do texto dentro do input, para acessar temos que usar o ::*/
+}
+
+.btn-login{
+    width: 100%;
+    padding: 16px 0px;
+    margin: 25px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;  /*transformamos o texto todo em maiusculo*/
+    font-weight: 800;
+    letter-spacing: 3px; /*Espaçamento entre as letras*/
+    color: #2b134b;
+    background: #00ff88;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #00ff8052; /*Ordem: 1º Eixo X | 2º Eixo Y | 3º Blur | 4º spred | 5º Cor*/
+}
+
+@media only screen and (max-width: 900px) { /*Aqui definimos que os objetos detro se passarem de 900px vão ficcar com 85% do tamanho*/
+    .card-login{
+        width: 85%
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .main-login{
+        flex-direction: column;
+    }
+    .left-login > h1{
+        display: none;
+    }
+    .left-login{
+        width: 100%;
+        height: auto;
+    }
+    .right-login{
+        width: 100%;
+        height: 80%;    
+    }
+    .left-login-image{
+        width: 35vh;
+    }
+    .card-login{
+        width: 90%; 
+    }
 }
